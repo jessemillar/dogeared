@@ -101,18 +101,24 @@ function drawDog() {
 }
 
 function animateDog() {
-    tiltHead();
-    moveLeftFoot();
-    moveRightFoot();
+    tiltHead(1000);
+    moveLeftFoot(2000);
+    moveRightFoot(2500);
     wagTail();
 }
 
-function tiltHead() {
-    var bbox = dog.head.snap.getBBox();
+function tiltHead(timeout) {
+    if (!timeout) {
+        timeout = 0;
+    }
 
-    dog.head.snap.animate({
-        transform: "r30," + bbox.cx + ',' + (bbox.cy + 25)
-    }, 250);
+    setTimeout(function() {
+        var bbox = dog.head.snap.getBBox();
+
+        dog.head.snap.animate({
+            transform: "r30," + bbox.cx + ',' + (bbox.cy + 25)
+        }, 250, mina.easeinout);
+    }, timeout);
 }
 
 function wagTail() {
@@ -135,18 +141,30 @@ function wagTailCounterClockwise() {
     }, 250, mina.easeinout, wagTailClockwise);
 }
 
-function moveLeftFoot() {
-    var bbox = dog.foot.left.snap.getBBox();
+function moveLeftFoot(timeout) {
+    if (!timeout) {
+        timeout = 0;
+    }
 
-    dog.foot.left.snap.animate({
-        transform: "r-25," + bbox.cx + ',' + (bbox.cy + dog.foot.height / 2)
-    }, 250);
+    setTimeout(function() {
+        var bbox = dog.foot.left.snap.getBBox();
+
+        dog.foot.left.snap.animate({
+            transform: "r-25," + bbox.cx + ',' + (bbox.cy + dog.foot.height / 2)
+        }, 500, mina.easeinout);
+    }, timeout);
 }
 
-function moveRightFoot() {
-    var bbox = dog.foot.right.snap.getBBox();
+function moveRightFoot(timeout) {
+    if (!timeout) {
+        timeout = 0;
+    }
 
-    dog.foot.right.snap.animate({
-        transform: "r25," + bbox.cx + ',' + (bbox.cy + dog.foot.height / 2)
-    }, 250);
+    setTimeout(function() {
+        var bbox = dog.foot.right.snap.getBBox();
+
+        dog.foot.right.snap.animate({
+            transform: "r25," + bbox.cx + ',' + (bbox.cy + dog.foot.height / 2)
+        }, 500, mina.easeinout);
+    }, timeout);
 }
