@@ -1,19 +1,29 @@
+var snap = Snap("#dog");
+
 var canvas = {
     width: 400,
     height: 400
 };
 
 var dog = {
+    // Make the main coordinate at the bottom-middle of the body
+    x: 200,
+    y: 350,
     head: {
         width: 150,
         height: 205
     },
     body: {
         width: 162,
-        height: 176
+        height: 161
+    },
+    legs: {
+        width: 122,
+        height: 98
     },
     tail: {
-        length: 100
+        width: 111,
+        height: 122
     },
     foot: {
         width: 30,
@@ -33,55 +43,110 @@ var dog = {
     }
 };
 
-dog.head.x = canvas.width / 2 - dog.head.width / 2;
-dog.head.y = 0;
+// These values are only used for initial setup, not animation
+dog.head.x = dog.x - dog.head.width / 2;
+dog.head.y = dog.y - dog.body.height * 0.75 - dog.head.height;
 
-dog.body.x = canvas.width / 2 - dog.body.width / 2;
-dog.body.y = dog.head.height / 4 * 3;
+dog.body.x = dog.x - dog.body.width / 2;
+dog.body.y = dog.y - dog.body.height;
 
-dog.tail.x1 = canvas.width / 2;
-dog.tail.y1 = canvas.height / 2;
-dog.tail.x2 = canvas.width / 2;
-dog.tail.y2 = canvas.height / 2 - dog.tail.length;
+dog.legs.x = dog.x - dog.legs.width / 2;
+dog.legs.y = dog.y - dog.legs.height + 20;
 
-dog.foot.left.x = canvas.width / 2 - dog.body.width / 2 - dog.foot.width / 2;
-dog.foot.left.y = dog.body.y + dog.body.height - dog.foot.height * 1.2;
+dog.tail.x = dog.x - dog.tail.width;
+dog.tail.y = dog.y - dog.tail.height;
 
-dog.foot.right.x = canvas.width / 2 + dog.body.width / 2 - dog.foot.width / 2;
-dog.foot.right.y = dog.body.y + dog.body.height - dog.foot.height * 1.2;
+dog.foot.left.x = dog.x - dog.body.width / 2 - dog.foot.width / 4;
+dog.foot.left.y = dog.y - dog.foot.height * 0.9;
 
-dog.shadow.x = canvas.width / 2 - dog.shadow.width / 2;
-dog.shadow.y = dog.body.y + dog.body.height - dog.shadow.height / 1.5;
+dog.foot.right.x = dog.x + dog.body.width / 2 - dog.foot.width / 4 * 3;
+dog.foot.right.y = dog.y - dog.foot.height * 0.9;
 
-var snap = Snap("#dog");
+dog.shadow.x = dog.x - dog.shadow.width / 2;
+dog.shadow.y = dog.y - dog.shadow.height * 0.6;
 
 function init() {
-    console.log("Stuff");
-
     drawDog();
-    // animateDog();
+    animateDog();
+    // debugPoint(dog.x, dog.y);
+}
+
+function debugPoint(x, y, color) {
+    var debugCircle = snap.circle(x, y, 1, 1);
+
+    if (color) {
+        debugCircle.attr({
+            fill: color
+        });
+    } else {
+        debugCircle.attr({
+            fill: "#ff0000"
+        });
+    }
 }
 
 function drawDog() {
-    dog.shadow.svg = snap.image("images/shadow.svg", dog.shadow.x, dog.shadow.y, dog.shadow.width, dog.shadow.height);
+    dog.shadow.snap = snap.image("images/shadow.svg", dog.shadow.x, dog.shadow.y, dog.shadow.width, dog.shadow.height);
 
-    dog.tail.svg = snap.line(dog.tail.x1, dog.tail.y1, dog.tail.x2, dog.tail.y2);
-    dog.tail.svg.attr({
-        stroke: "#000",
-        strokeWidth: 25
-    });
+    dog.tail.snap = snap.image("images/tail.svg", dog.tail.x, dog.tail.y, dog.tail.width, dog.tail.height);
 
-    dog.body.svg = snap.image("images/body.svg", dog.body.x, dog.body.y, dog.body.width, dog.body.height);
+    dog.body.snap = snap.image("images/body.svg", dog.body.x, dog.body.y, dog.body.width, dog.body.height);
 
-    dog.foot.left.svg = snap.image("images/foot.svg", dog.foot.left.x, dog.foot.left.y, dog.foot.width, dog.foot.height);
-    dog.foot.right.svg = snap.image("images/foot.svg", dog.foot.right.x, dog.foot.right.y, dog.foot.width, dog.foot.height);
+    dog.foot.left.snap = snap.image("images/foot.svg", dog.foot.left.x, dog.foot.left.y, dog.foot.width, dog.foot.height);
+    dog.foot.right.snap = snap.image("images/foot.svg", dog.foot.right.x, dog.foot.right.y, dog.foot.width, dog.foot.height);
 
-    dog.head.svg = snap.image("images/head.svg", dog.head.x, dog.head.y, dog.head.width, dog.head.height);
+    dog.legs.snap = snap.image("images/legs.svg", dog.legs.x, dog.legs.y, dog.legs.width, dog.legs.height);
+
+    dog.head.snap = snap.image("images/head.svg", dog.head.x, dog.head.y, dog.head.width, dog.head.height);
 }
 
 function animateDog() {
-    dog.head.svg.animate({
-        width: "200px",
-        height: "200px",
-    }, 1000);
+    tiltHead();
+    moveLeftFoot();
+    moveRightFoot();
+    wagTail();
+}
+
+function tiltHead() {
+    var bbox = dog.head.snap.getBBox();
+
+    dog.head.snap.animate({
+        transform: "r30," + bbox.cx + ',' + (bbox.cy + 25)
+    }, 250);
+}
+
+function wagTail() {
+    wagTailClockwise();
+}
+
+function wagTailClockwise() {
+    var bbox = dog.tail.snap.getBBox();
+
+    dog.tail.snap.animate({
+        transform: "r90," + (bbox.cx + dog.tail.width / 2) + ',' + (bbox.cy + dog.tail.height / 2)
+    }, 250, mina.linear, wagTailCounterClockwise);
+}
+
+function wagTailCounterClockwise() {
+    var bbox = dog.tail.snap.getBBox();
+
+    dog.tail.snap.animate({
+        transform: "r0," + (bbox.cx + dog.tail.width / 2) + ',' + (bbox.cy + dog.tail.height / 2)
+    }, 250, mina.linear, wagTailClockwise);
+}
+
+function moveLeftFoot() {
+    var bbox = dog.foot.left.snap.getBBox();
+
+    dog.foot.left.snap.animate({
+        transform: "r-25," + bbox.cx + ',' + (bbox.cy + dog.foot.height / 2)
+    }, 250);
+}
+
+function moveRightFoot() {
+    var bbox = dog.foot.right.snap.getBBox();
+
+    dog.foot.right.snap.animate({
+        transform: "r25," + bbox.cx + ',' + (bbox.cy + dog.foot.height / 2)
+    }, 250);
 }
