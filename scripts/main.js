@@ -123,16 +123,16 @@ function wagTailClockwise() {
     var bbox = dog.tail.snap.getBBox();
 
     dog.tail.snap.animate({
-        transform: "r90," + (bbox.cx + dog.tail.width / 2) + ',' + (bbox.cy + dog.tail.height / 2)
-    }, 250, mina.linear, wagTailCounterClockwise);
+        transform: "r90," + dog.x + "," + dog.y
+    }, 250, mina.easeinout, wagTailCounterClockwise);
 }
 
 function wagTailCounterClockwise() {
     var bbox = dog.tail.snap.getBBox();
 
     dog.tail.snap.animate({
-        transform: "r0," + (bbox.cx + dog.tail.width / 2) + ',' + (bbox.cy + dog.tail.height / 2)
-    }, 250, mina.linear, wagTailClockwise);
+        transform: "r0," + dog.x + "," + dog.y
+    }, 250, mina.easeinout, wagTailClockwise);
 }
 
 function moveLeftFoot() {
