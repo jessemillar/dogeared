@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 viewBox="0 0 30.8 51.5" enable-background="new 0 0 30.8 51.5" xml:space="preserve">
-<circle fill="#FF974F" cx="15.4" cy="15.4" r="15.4"/>
-<circle fill="#FF974F" cx="15.4" cy="36.1" r="15.4"/>
-<rect y="15.4" fill="#FF974F" width="30.8" height="20.8"/>
-<circle fill="#FFD393" cx="15.4" cy="22.4" r="7.6"/>
-<circle fill="#FFD393" cx="15.4" cy="7.7" r="4.1"/>
+	 viewBox="0 0 30 50" enable-background="new 0 0 30 50" xml:space="preserve">
+<ellipse fill="#FF974F" cx="15" cy="14.9" rx="15" ry="14.9"/>
+<ellipse fill="#FF974F" cx="15" cy="35.1" rx="15" ry="14.9"/>
+<rect y="14.9" fill="#FF974F" width="30" height="20.1"/>
+<ellipse fill="#FFD393" cx="15" cy="21.7" rx="7.4" ry="7.3"/>
+<ellipse fill="#FFD393" cx="15" cy="7.5" rx="4" ry="3.9"/>
 <g>
-	<circle fill="#FFD393" cx="24.1" cy="12.8" r="4.1"/>
-	<circle fill="#FFD393" cx="6.7" cy="12.8" r="4.1"/>
+	<ellipse fill="#FFD393" cx="23.5" cy="12.4" rx="4" ry="3.9"/>
+	<ellipse fill="#FFD393" cx="6.5" cy="12.4" rx="4" ry="3.9"/>
 </g>
 </svg>
