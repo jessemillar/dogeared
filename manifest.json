@@ -1,0 +1,7 @@
+{
+  "name": "Dogeared",
+
+  "chrome_url_overrides" : {
+    "pageToOverride": "index.html"
+  }
+}
