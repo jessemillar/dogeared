@@ -40,6 +40,12 @@ var dog = {
     shadow: {
         width: 248,
         height: 75
+    },
+    accessories: {
+        glasses: {
+            width: 128,
+            height: 42
+        }
     }
 };
 
