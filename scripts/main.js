@@ -1,4 +1,16 @@
+var cellar = new Cellar();
 var snap = Snap("#dog");
+
+var saveData = cellar.get("dogeared");
+
+var save = {
+    version: 1.0,
+    dog: {
+        name: "Awesome Heeler",
+        affection: 0,
+        accessories: []
+    }
+};
 
 var canvas = {
     width: 400,
@@ -134,14 +146,33 @@ dog.shadow.x = dog.x;
 dog.shadow.y = dog.y;
 
 function init() {
+    if (!saveData) { // Create the save file if there isn't one already
+        cellar.save("dogeared", save);
+    }
+
+    // TODO: Check that save data is the current version and migrate to the current version if not
+
+    showName();
+
     drawDog();
     wagTail(); // Always wag tail, just change the speed to a random value
 
-    var babbleTimer = setInterval(function() {
+    var animateTimer = setInterval(function() {
         animateDog();
     }, dog.animation.interval);
 
     // debugPoint(dog.tail.x - dog.tail.anchor.x, dog.tail.y - dog.tail.anchor.y);
+}
+
+function showName() {
+    document.getElementById("name").value = saveData.dog.name;
+}
+
+function setName() {
+    console.log("Setting name");
+
+    saveData.dog.name = document.getElementById("name").value;
+    cellar.save("dogeared", saveData);
 }
 
 function coinFlip() {

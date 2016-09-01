@@ -26,13 +26,17 @@ html {
 }
 
 #name {
-    position  : absolute;
-    left      : 0;
-    top       : 50%;
-    width     : 100%;
-    height    : 35px;
-    margin-top: calc(200px - 35px);
-    font-size : 25px;
-    color     : #fff;
-    text-align: center;
+    position        : absolute;
+    left            : 0;
+    top             : 50%;
+    width           : 100%;
+    height          : 35px;
+    margin-top      : calc(200px - 35px);
+    font-size       : 25px;
+    color           : #fff;
+    text-align      : center;
+    background-color: transparent;
+    border          : none;
+    outline         : none;
+    font-family     : 'Baloo', cursive;
 }
