@@ -53,6 +53,9 @@ var dog = {
 dog.head.x = dog.x - dog.head.width / 2;
 dog.head.y = dog.y - dog.body.height * 0.75 - dog.head.height;
 
+dog.accessories.glasses.x = dog.x - dog.accessories.glasses.width / 2;
+dog.accessories.glasses.y = dog.y - dog.body.height * 0.75 - dog.head.height * 0.425;
+
 dog.body.x = dog.x - dog.body.width / 2;
 dog.body.y = dog.y - dog.body.height;
 
@@ -104,6 +107,10 @@ function drawDog() {
     dog.legs.snap = snap.image("images/legs.svg", dog.legs.x, dog.legs.y, dog.legs.width, dog.legs.height);
 
     dog.head.snap = snap.image("images/head.svg", dog.head.x, dog.head.y, dog.head.width, dog.head.height);
+
+    dog.accessories.glasses.snap = snap.image("images/glasses.svg", dog.accessories.glasses.x, dog.accessories.glasses.y, dog.accessories.glasses.width, dog.accessories.glasses.height);
+
+    dog.head.group = snap.group(dog.head.snap, dog.accessories.glasses.snap);
 }
 
 function animateDog() {
@@ -119,9 +126,9 @@ function tiltHead(timeout) {
     }
 
     setTimeout(function() {
-        var bbox = dog.head.snap.getBBox();
+        var bbox = dog.head.group.getBBox();
 
-        dog.head.snap.animate({
+        dog.head.group.animate({
             transform: "r30," + bbox.cx + ',' + (bbox.cy + 25)
         }, 250, mina.easeinout);
     }, timeout);
