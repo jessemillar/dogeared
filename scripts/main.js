@@ -169,8 +169,6 @@ function showName() {
 }
 
 function setName() {
-    console.log("Setting name");
-
     saveData.dog.name = document.getElementById("name").value;
     cellar.save("dogeared", saveData);
 }
