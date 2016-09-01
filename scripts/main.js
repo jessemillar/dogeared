@@ -11,73 +11,153 @@ var dog = {
     y: 350,
     head: {
         width: 150,
-        height: 205
+        height: 205,
+        anchor: {
+            x: 150 / 2,
+            y: 190
+        }
     },
     body: {
         width: 162,
-        height: 161
+        height: 161,
+        anchor: {
+            x: 162 / 2,
+            y: 161
+        }
     },
     legs: {
         width: 122,
-        height: 98
+        height: 98,
+        anchor: {
+            x: 122 / 2,
+            y: 98
+        }
     },
     tail: {
+        duration: 250,
+        offset: 12.5,
         width: 111,
-        height: 122
+        height: 122,
+        anchor: {
+            x: 111 - 12.5,
+            y: 122 - 12.5
+        }
     },
     foot: {
-        width: 30,
-        height: 50,
         left: {
             x: 0,
-            y: 0
+            y: 0,
+            width: 30,
+            height: 50,
+            anchor: {
+                x: 30 / 2,
+                y: 45
+            }
         },
         right: {
             x: 0,
-            y: 0
+            y: 0,
+            width: 30,
+            height: 50,
+            anchor: {
+                x: 30 / 2,
+                y: 45
+            }
         }
     },
     shadow: {
         width: 248,
-        height: 75
+        height: 75,
+        anchor: {
+            x: 248 / 2,
+            y: 75 / 2 + 5
+        }
     },
     accessories: {
         glasses: {
             width: 128,
-            height: 42
+            height: 42,
+            anchor: {
+                x: 128 / 2,
+                y: 42 / 2
+            }
+        }
+    },
+    animation: {
+        interval: 1000,
+        head: {
+            chance: 0.25,
+            bounds: {
+                left: -35,
+                right: 35
+            }
+        },
+        foot: {
+            chance: 0.9,
+            bounds: {
+                left: -15,
+                right: 15
+            }
+        },
+        tail: {
+            chance: 0.3,
+            bounds: {
+                left: 250,
+                right: 750,
+            }
         }
     }
 };
 
-// These values are only used for initial setup, not animation
-dog.head.x = dog.x - dog.head.width / 2;
-dog.head.y = dog.y - dog.body.height * 0.75 - dog.head.height;
+dog.head.x = dog.x;
+dog.head.y = dog.y - dog.body.height * 0.75;
 
-dog.accessories.glasses.x = dog.x - dog.accessories.glasses.width / 2;
-dog.accessories.glasses.y = dog.y - dog.body.height * 0.75 - dog.head.height * 0.425;
+dog.accessories.glasses.x = dog.head.x;
+dog.accessories.glasses.y = dog.head.y - dog.head.height * 0.25;
 
-dog.body.x = dog.x - dog.body.width / 2;
-dog.body.y = dog.y - dog.body.height;
+dog.body.x = dog.x;
+dog.body.y = dog.y;
 
-dog.legs.x = dog.x - dog.legs.width / 2;
-dog.legs.y = dog.y - dog.legs.height + 20;
+dog.legs.x = dog.x;
+dog.legs.y = dog.y + 20;
 
-dog.tail.x = dog.x - dog.tail.width;
-dog.tail.y = dog.y - dog.tail.height;
+dog.tail.x = dog.x;
+dog.tail.y = dog.y - dog.tail.offset;
 
-dog.foot.left.x = dog.x - dog.body.width / 2 - dog.foot.width / 4;
-dog.foot.left.y = dog.y - dog.foot.height * 0.9;
+dog.foot.left.x = dog.x - dog.body.width / 2 + 5;
+dog.foot.left.y = dog.y;
 
-dog.foot.right.x = dog.x + dog.body.width / 2 - dog.foot.width / 4 * 3;
-dog.foot.right.y = dog.y - dog.foot.height * 0.9;
+dog.foot.right.x = dog.x + dog.body.width / 2 - 5;
+dog.foot.right.y = dog.y;
 
-dog.shadow.x = dog.x - dog.shadow.width / 2;
-dog.shadow.y = dog.y - dog.shadow.height * 0.6;
+dog.shadow.x = dog.x;
+dog.shadow.y = dog.y;
 
 function init() {
     drawDog();
-    animateDog();
-    // debugPoint(dog.x, dog.y);
+    wagTail(); // Always wag tail, just change the speed to a random value
+
+    var babbleTimer = setInterval(function() {
+        animateDog();
+    }, dog.animation.interval);
+
+    // debugPoint(dog.tail.x - dog.tail.anchor.x, dog.tail.y - dog.tail.anchor.y);
+}
+
+function coinFlip() {
+    if (Math.random() < 0.5) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function randomRange(left, right, negative) {
+    if (negative) {
+        return Math.floor(Math.random() * (right - 1 + right)) + left;
+    }
+
+    return Math.floor(Math.random() * right) + left;
 }
 
 function debugPoint(x, y, color) {
@@ -94,90 +174,97 @@ function debugPoint(x, y, color) {
     }
 }
 
+function loadImage(image, entity) {
+    return snap.image("images/" + image + ".svg", eval(entity + ".x") - eval(entity + ".anchor.x"), eval(entity + ".y") - eval(entity + ".anchor.y"), eval(entity + ".width"), eval(entity + ".height"));
+}
+
 function drawDog() {
-    dog.shadow.snap = snap.image("images/shadow.svg", dog.shadow.x, dog.shadow.y, dog.shadow.width, dog.shadow.height);
+    dog.shadow.snap = loadImage("shadow", "dog.shadow");
 
-    dog.tail.snap = snap.image("images/tail.svg", dog.tail.x, dog.tail.y, dog.tail.width, dog.tail.height);
+    dog.tail.snap = loadImage("tail", "dog.tail");
 
-    dog.body.snap = snap.image("images/body.svg", dog.body.x, dog.body.y, dog.body.width, dog.body.height);
+    dog.body.snap = loadImage("body", "dog.body");
 
-    dog.foot.left.snap = snap.image("images/foot.svg", dog.foot.left.x, dog.foot.left.y, dog.foot.width, dog.foot.height);
-    dog.foot.right.snap = snap.image("images/foot.svg", dog.foot.right.x, dog.foot.right.y, dog.foot.width, dog.foot.height);
+    dog.foot.left.snap = loadImage("foot", "dog.foot.left");
+    dog.foot.right.snap = loadImage("foot", "dog.foot.right");
 
-    dog.legs.snap = snap.image("images/legs.svg", dog.legs.x, dog.legs.y, dog.legs.width, dog.legs.height);
+    dog.legs.snap = loadImage("legs", "dog.legs");
 
-    dog.head.snap = snap.image("images/head.svg", dog.head.x, dog.head.y, dog.head.width, dog.head.height);
+    dog.head.snap = loadImage("head", "dog.head");
 
-    dog.accessories.glasses.snap = snap.image("images/glasses.svg", dog.accessories.glasses.x, dog.accessories.glasses.y, dog.accessories.glasses.width, dog.accessories.glasses.height);
+    dog.accessories.glasses.snap = loadImage("glasses", "dog.accessories.glasses");
 
     dog.head.group = snap.group(dog.head.snap, dog.accessories.glasses.snap);
 }
 
 function animateDog() {
-    tiltHead(1000);
-    moveLeftFoot(2000);
-    moveRightFoot(2500);
-    wagTail();
+    if (Math.random() <= dog.animation.head.chance) {
+        var angle = randomRange(dog.animation.head.bounds.left, dog.animation.head.bounds.right, true);
+
+        tiltHead(angle, 350);
+    }
+
+    if (Math.random() <= dog.animation.tail.chance) {
+        dog.tail.duration = randomRange(dog.animation.tail.bounds.left, dog.animation.tail.bounds.right);
+    }
+
+    if (Math.random() <= dog.animation.tail.chance) {
+        var angle = randomRange(dog.animation.foot.bounds.left, dog.animation.foot.bounds.right, true);
+
+        if (coinFlip()) {
+            moveFoot("left", angle);
+        } else {
+            moveFoot("right", angle);
+        }
+    }
 }
 
-function tiltHead(timeout) {
+function tiltHead(angle, duration, timeout) {
+    if (!timeout) {
+        timeout = 0;
+    }
+
+    if (!duration) {
+        duration = 350;
+    }
+
+    setTimeout(function() {
+        dog.head.group.animate({
+            transform: "r" + angle + "," + dog.head.x + ',' + dog.head.y
+        }, duration, mina.easeinout);
+    }, timeout);
+}
+
+function moveFoot(foot, angle, duration, timeout) {
     if (!timeout) {
         timeout = 0;
     }
 
     setTimeout(function() {
-        var bbox = dog.head.group.getBBox();
-
-        dog.head.group.animate({
-            transform: "r30," + bbox.cx + ',' + (bbox.cy + 25)
-        }, 250, mina.easeinout);
+        eval("dog.foot." + foot).snap.animate({
+            transform: "r" + angle + "," + eval("dog.foot." + foot + ".x") + ',' + eval("dog.foot." + foot + ".y")
+        }, 1000, mina.easeinout);
     }, timeout);
 }
 
-function wagTail() {
+function wagTail(duration) {
+    if (!duration) {
+        duration = 500;
+    }
+
+    dog.tail.duration = duration;
+
     wagTailClockwise();
 }
 
 function wagTailClockwise() {
-    var bbox = dog.tail.snap.getBBox();
-
     dog.tail.snap.animate({
-        transform: "r90," + dog.x + "," + dog.y
-    }, 250, mina.easeinout, wagTailCounterClockwise);
+        transform: "r90," + dog.x + "," + (dog.y - dog.tail.offset)
+    }, dog.tail.duration, mina.easeinout, wagTailCounterClockwise);
 }
 
 function wagTailCounterClockwise() {
-    var bbox = dog.tail.snap.getBBox();
-
     dog.tail.snap.animate({
-        transform: "r0," + dog.x + "," + dog.y
-    }, 250, mina.easeinout, wagTailClockwise);
-}
-
-function moveLeftFoot(timeout) {
-    if (!timeout) {
-        timeout = 0;
-    }
-
-    setTimeout(function() {
-        var bbox = dog.foot.left.snap.getBBox();
-
-        dog.foot.left.snap.animate({
-            transform: "r-25," + bbox.cx + ',' + (bbox.cy + dog.foot.height / 2)
-        }, 500, mina.easeinout);
-    }, timeout);
-}
-
-function moveRightFoot(timeout) {
-    if (!timeout) {
-        timeout = 0;
-    }
-
-    setTimeout(function() {
-        var bbox = dog.foot.right.snap.getBBox();
-
-        dog.foot.right.snap.animate({
-            transform: "r25," + bbox.cx + ',' + (bbox.cy + dog.foot.height / 2)
-        }, 500, mina.easeinout);
-    }, timeout);
+        transform: "r0," + dog.x + "," + (dog.y - dog.tail.offset)
+    }, dog.tail.duration, mina.easeinout, wagTailClockwise);
 }
