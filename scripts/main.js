@@ -6,7 +6,7 @@ var saveData = cellar.get("dogeared");
 var save = {
     version: 1.0,
     dog: {
-        name: "Awesome Heeler",
+        name: "Cool Heeler",
         affection: 0,
         accessories: []
     }
@@ -157,11 +157,18 @@ function init() {
     drawDog();
     wagTail(); // Always wag tail, just change the speed to a random value
 
+    dog.head.snap.mousemove(pet);
+
     var animateTimer = setInterval(function() {
         animateDog();
     }, dog.animation.interval);
 
     // debugPoint(dog.tail.x - dog.tail.anchor.x, dog.tail.y - dog.tail.anchor.y);
+}
+
+function pet() {
+    saveData.dog.affection++;
+    cellar.save("dogeared", saveData);
 }
 
 function showName() {
