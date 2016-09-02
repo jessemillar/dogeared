@@ -1,6 +1,8 @@
 function initDraw() {
     dog.shadow.snap = loadImage("shadow", "dog.shadow");
 
+    effects.heart.snap = loadImage("heart", "effects.heart");
+
     dog.tail.snap = loadImage("tail", "dog.tail");
 
     dog.body.snap = loadImage("body", "dog.body");

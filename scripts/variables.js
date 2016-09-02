@@ -145,14 +145,22 @@ var accessories = {
     }
 };
 
+var effects = {
+    heart: {
+        width: 62,
+        height: 56,
+        anchor: {
+            x: 62 / 2,
+            y: 56 / 2
+        }
+    }
+};
+
 dog.head.x = dog.x;
 dog.head.y = dog.y - dog.body.height * 0.75;
 
 dog.eyes.x = dog.head.x;
 dog.eyes.y = dog.head.y - dog.head.height * 0.25;
-
-accessories.glasses.x = dog.head.x;
-accessories.glasses.y = dog.head.y - dog.head.height * 0.25;
 
 dog.body.x = dog.x;
 dog.body.y = dog.y;
@@ -171,3 +179,9 @@ dog.foot.right.y = dog.y;
 
 dog.shadow.x = dog.x;
 dog.shadow.y = dog.y;
+
+accessories.glasses.x = dog.head.x;
+accessories.glasses.y = dog.head.y - dog.head.height * 0.25;
+
+effects.heart.x = dog.head.x;
+effects.heart.y = dog.head.y;

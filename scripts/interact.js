@@ -10,5 +10,13 @@ function pet() {
 }
 
 function donePetting() {
-    switchEyes("normal");
+    setTimeout(function() {
+        switchEyes("normal");
+    }, 650);
+}
+
+function heartEffect(duration) {
+    effects.heart.snap.animate({
+        transform: "t125,-125"
+    }, duration, mina.easeinout);
 }
