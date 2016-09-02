@@ -6,9 +6,8 @@ function initInteraction() {
 function pet() {
     switchEyes("happy");
     saveData.dog.affection.exp++;
-    cellar.save("dogeared", saveData);
 
-    if (saveData.dog.affection.exp > 500) {
+    if (saveData.dog.affection.exp > 300) {
         heartEffect();
         saveData.dog.affection.level++;
         saveData.dog.affection.exp = 0;
@@ -16,6 +15,8 @@ function pet() {
 }
 
 function donePetting() {
+    cellar.save("dogeared", saveData);
+
     setTimeout(function() {
         switchEyes("normal");
     }, 650);
