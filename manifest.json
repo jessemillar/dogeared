@@ -7,6 +7,5 @@
     },
     "sandbox": {
         "pages": ["sandbox.html"]
-    },
-    "content_security_policy": "sandbox allow-scripts allow-forms allow-same-origin"
+    }
 }
