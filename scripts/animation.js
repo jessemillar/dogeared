@@ -37,7 +37,7 @@ function tiltHead(angle, duration) {
         duration = 1;
     }
 
-    dog.head.angle = angle; // Save the angle globally so we can rotate accessories and eyes
+    animation.head.angle = angle; // Save the angle globally so we can rotate accessories and eyes
 
     dog.head.group.animate({
         transform: "r" + angle + "," + dog.head.x + ',' + dog.head.y

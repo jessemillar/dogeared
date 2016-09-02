@@ -12,11 +12,23 @@ function initDraw() {
 
     dog.head.snap = loadImage("head", "dog.head");
 
-    dog.eyes.snap = loadImage("eyes", "dog.eyes");
+    dog.eyes.emotions.normal.snap = loadImage("eyes", "dog.eyes");
+    dog.eyes.emotions.happy.snap = loadImage("eyes-happy", "dog.eyes");
+    dog.eyes.emotions.sleepy.snap = loadImage("eyes-sleepy", "dog.eyes");
 
     accessories.glasses.snap = loadImage("glasses", "accessories.glasses");
 
-    dog.head.group = snap.group(dog.head.snap, accessories.glasses.snap, dog.eyes.snap);
+    dog.head.group = snap.group(dog.head.snap, accessories.glasses.snap, dog.eyes.emotions.normal.snap, dog.eyes.emotions.happy.snap, dog.eyes.emotions.sleepy.snap);
+
+    switchEyes("normal");
+}
+
+function switchEyes(eyes) {
+    dog.eyes.emotions.normal.snap.attr("opacity", 0);
+    dog.eyes.emotions.happy.snap.attr("opacity", 0);
+    dog.eyes.emotions.sleepy.snap.attr("opacity", 0);
+
+    eval("dog.eyes.emotions." + eyes + ".snap").attr("opacity", 1);
 }
 
 function loadImage(image, entity) {

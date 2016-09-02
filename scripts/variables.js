@@ -20,6 +20,7 @@ var save = {
 var animation = {
     interval: 1000,
     head: {
+        angle: 0,
         chance: 0.2,
         duration: 350,
         bounds: {
@@ -56,7 +57,6 @@ var dog = {
     x: 200,
     y: 350,
     head: {
-        angle: 0,
         width: 150,
         height: 205,
         anchor: {
@@ -70,6 +70,11 @@ var dog = {
         anchor: {
             x: 74 / 2,
             y: 16 / 2
+        },
+        emotions: {
+            normal: {},
+            happy: {},
+            sleepy: {}
         }
     },
     body: {
