@@ -22,6 +22,7 @@ var dog = {
     x: 200,
     y: 350,
     head: {
+        angle: 0,
         width: 150,
         height: 205,
         anchor: {
@@ -98,24 +99,24 @@ var dog = {
     animation: {
         interval: 1000,
         head: {
-            chance: 0.25,
+            chance: 0.2,
             bounds: {
                 left: -35,
                 right: 35
             }
         },
         foot: {
-            chance: 0.9,
+            chance: 0.75,
             bounds: {
                 left: -15,
                 right: 15
             }
         },
         tail: {
-            chance: 0.3,
+            chance: 0.2,
             bounds: {
                 left: 250,
-                right: 750,
+                right: 500,
             }
         }
     }
@@ -155,6 +156,7 @@ function init() {
     showName();
 
     drawDog();
+    initTilt();
     wagTail(); // Always wag tail, just change the speed to a random value
 
     dog.head.snap.mousemove(pet);
@@ -233,6 +235,17 @@ function drawDog() {
     dog.head.group = snap.group(dog.head.snap, dog.accessories.glasses.snap);
 }
 
+function initTilt() {
+    var angle = randomRange(dog.animation.head.bounds.left, dog.animation.head.bounds.right, true);
+    tiltHead(angle, 1);
+
+    angle = randomRange(dog.animation.foot.bounds.left, dog.animation.foot.bounds.right, true);
+    moveFoot("left", angle, 1);
+
+    angle = randomRange(dog.animation.foot.bounds.left, dog.animation.foot.bounds.right, true);
+    moveFoot("right", angle, 1);
+}
+
 function animateDog() {
     if (Math.random() <= dog.animation.head.chance) {
         var angle = randomRange(dog.animation.head.bounds.left, dog.animation.head.bounds.right, true);
@@ -244,7 +257,7 @@ function animateDog() {
         dog.tail.duration = randomRange(dog.animation.tail.bounds.left, dog.animation.tail.bounds.right);
     }
 
-    if (Math.random() <= dog.animation.tail.chance) {
+    if (Math.random() <= dog.animation.foot.chance) {
         var angle = randomRange(dog.animation.foot.bounds.left, dog.animation.foot.bounds.right, true);
 
         if (coinFlip()) {
@@ -264,6 +277,8 @@ function tiltHead(angle, duration, timeout) {
         duration = 350;
     }
 
+    dog.head.angle = angle;
+
     setTimeout(function() {
         dog.head.group.animate({
             transform: "r" + angle + "," + dog.head.x + ',' + dog.head.y
@@ -276,10 +291,14 @@ function moveFoot(foot, angle, duration, timeout) {
         timeout = 0;
     }
 
+    if (!duration) {
+        duration = 500;
+    }
+
     setTimeout(function() {
         eval("dog.foot." + foot).snap.animate({
             transform: "r" + angle + "," + eval("dog.foot." + foot + ".x") + ',' + eval("dog.foot." + foot + ".y")
-        }, 1000, mina.easeinout);
+        }, duration, mina.easeinout);
     }, timeout);
 }
 
