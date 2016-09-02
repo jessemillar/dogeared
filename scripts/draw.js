@@ -1,8 +1,6 @@
 function initDraw() {
     dog.shadow.snap = loadImage("shadow", "dog.shadow");
 
-    effects.heart.snap = loadImage("heart", "effects.heart");
-
     dog.tail.snap = loadImage("tail", "dog.tail");
 
     dog.body.snap = loadImage("body", "dog.body");
@@ -21,6 +19,9 @@ function initDraw() {
     accessories.glasses.snap = loadImage("glasses", "accessories.glasses");
 
     dog.head.group = snap.group(dog.head.snap, accessories.glasses.snap, dog.eyes.emotions.normal.snap, dog.eyes.emotions.happy.snap, dog.eyes.emotions.sleepy.snap);
+
+    effects.heart.snap = loadImage("heart", "effects.heart");
+    effects.heart.snap.transform("s0,0"); // Hide the heart
 
     switchEyes("normal");
 }

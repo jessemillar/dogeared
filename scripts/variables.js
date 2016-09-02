@@ -6,13 +6,16 @@ var canvas = {
     height: 400
 };
 
-var saveData = cellar.get("dogeared");
+var saveData = {};
 
 var save = {
     version: 1.0,
     dog: {
         name: "Cool Heeler",
-        affection: 0,
+        affection: {
+            level: 1,
+            exp: 0
+        },
         accessories: []
     }
 };
@@ -184,4 +187,4 @@ accessories.glasses.x = dog.head.x;
 accessories.glasses.y = dog.head.y - dog.head.height * 0.25;
 
 effects.heart.x = dog.head.x;
-effects.heart.y = dog.head.y;
+effects.heart.y = dog.head.y - dog.head.height * 0.85;

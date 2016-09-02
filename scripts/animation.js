@@ -71,3 +71,15 @@ function wagTailCounterClockwise() {
         transform: "r" + animation.tail.bounds.left + "," + dog.x + "," + (dog.y - dog.tail.offset)
     }, animation.tail.duration, mina.easeinout, wagTailClockwise);
 }
+
+function heartEffect() {
+    effects.heart.snap.animate({
+        transform: "s1,1,1,1"
+    }, 500, mina.elastic);
+
+    setTimeout(function() {
+        effects.heart.snap.animate({
+            transform: "s0,0"
+        }, 100, mina.easeinout);
+    }, 2000);
+}

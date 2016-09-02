@@ -5,18 +5,18 @@ function initInteraction() {
 
 function pet() {
     switchEyes("happy");
-    saveData.dog.affection++;
+    saveData.dog.affection.exp++;
     cellar.save("dogeared", saveData);
+
+    if (saveData.dog.affection.exp > 500) {
+        heartEffect();
+        saveData.dog.affection.level++;
+        saveData.dog.affection.exp = 0;
+    }
 }
 
 function donePetting() {
     setTimeout(function() {
         switchEyes("normal");
     }, 650);
-}
-
-function heartEffect(duration) {
-    effects.heart.snap.animate({
-        transform: "t125,-125"
-    }, duration, mina.easeinout);
 }
