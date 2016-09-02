@@ -64,6 +64,14 @@ var dog = {
             y: 190
         }
     },
+    eyes: {
+        width: 74,
+        height: 16,
+        anchor: {
+            x: 74 / 2,
+            y: 16 / 2
+        }
+    },
     body: {
         width: 162,
         height: 161,
@@ -118,15 +126,16 @@ var dog = {
             x: 248 / 2,
             y: 75 / 2 + 5
         }
-    },
-    accessories: {
-        glasses: {
-            width: 128,
-            height: 42,
-            anchor: {
-                x: 128 / 2,
-                y: 42 / 2
-            }
+    }
+};
+
+var accessories = {
+    glasses: {
+        width: 128,
+        height: 42,
+        anchor: {
+            x: 128 / 2,
+            y: 42 / 2
         }
     }
 };
@@ -134,8 +143,11 @@ var dog = {
 dog.head.x = dog.x;
 dog.head.y = dog.y - dog.body.height * 0.75;
 
-dog.accessories.glasses.x = dog.head.x;
-dog.accessories.glasses.y = dog.head.y - dog.head.height * 0.25;
+dog.eyes.x = dog.head.x;
+dog.eyes.y = dog.head.y - dog.head.height * 0.25;
+
+accessories.glasses.x = dog.head.x;
+accessories.glasses.y = dog.head.y - dog.head.height * 0.25;
 
 dog.body.x = dog.x;
 dog.body.y = dog.y;

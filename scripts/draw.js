@@ -12,9 +12,11 @@ function initDraw() {
 
     dog.head.snap = loadImage("head", "dog.head");
 
-    dog.accessories.glasses.snap = loadImage("glasses", "dog.accessories.glasses");
+    dog.eyes.snap = loadImage("eyes", "dog.eyes");
 
-    dog.head.group = snap.group(dog.head.snap, dog.accessories.glasses.snap);
+    accessories.glasses.snap = loadImage("glasses", "accessories.glasses");
+
+    dog.head.group = snap.group(dog.head.snap, accessories.glasses.snap, dog.eyes.snap);
 }
 
 function loadImage(image, entity) {
