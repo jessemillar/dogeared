@@ -1,6 +1,11 @@
 var cellar = new Cellar();
 var snap = Snap("#dog");
 
+var canvas = {
+    width: 400,
+    height: 400
+};
+
 var saveData = cellar.get("dogeared");
 
 var save = {
@@ -12,9 +17,38 @@ var save = {
     }
 };
 
-var canvas = {
-    width: 400,
-    height: 400
+var animation = {
+    interval: 1000,
+    head: {
+        chance: 0.2,
+        duration: 350,
+        bounds: {
+            left: -35,
+            right: 35
+        }
+    },
+    foot: {
+        chance: 0.75,
+        duration: 500,
+        bounds: {
+            left: -15,
+            right: 15
+        }
+    },
+    tail: {
+        bounds: {
+            left: -55,
+            right: 55,
+        },
+        wag: {
+            chance: 0.2,
+            duration: 500,
+            bounds: {
+                left: 250,
+                right: 500,
+            },
+        }
+    }
 };
 
 var dog = {
@@ -47,13 +81,12 @@ var dog = {
         }
     },
     tail: {
-        duration: 250,
         offset: 12.5,
-        width: 111,
-        height: 122,
+        width: 25,
+        height: 155,
         anchor: {
-            x: 111 - 12.5,
-            y: 122 - 12.5
+            x: 25 / 2,
+            y: 155 - 12.5
         }
     },
     foot: {
@@ -93,33 +126,6 @@ var dog = {
             anchor: {
                 x: 128 / 2,
                 y: 42 / 2
-            }
-        }
-    },
-    animation: {
-        interval: 1000,
-        head: {
-            chance: 0.2,
-            duration: 350,
-            bounds: {
-                left: -35,
-                right: 35
-            }
-        },
-        foot: {
-            chance: 0.75,
-            duration: 500,
-            bounds: {
-                left: -15,
-                right: 15
-            }
-        },
-        tail: {
-            chance: 0.2,
-            duration: 500,
-            bounds: {
-                left: 250,
-                right: 500,
             }
         }
     }

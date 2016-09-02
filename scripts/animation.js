@@ -1,33 +1,33 @@
 function initAnimation() {
-    wagTail(dog.animation.tail.duration); // Always wag tail, just change the speed to a random value
+    wagTail(animation.tail.wag.duration); // Always wag tail, just change the speed to a random value
 
     var animateTimer = setInterval(function() {
-        animateDog();
-    }, dog.animation.interval);
+        animate();
+    }, animation.interval);
 }
 
 function initTilt() {
-    tiltHead(randomRange(dog.animation.head.bounds.left, dog.animation.head.bounds.right, true));
-    moveFoot("left", randomRange(dog.animation.foot.bounds.left, dog.animation.foot.bounds.right, true));
-    moveFoot("right", randomRange(dog.animation.foot.bounds.left, dog.animation.foot.bounds.right, true));
+    tiltHead(randomRange(animation.head.bounds.left, animation.head.bounds.right, true));
+    moveFoot("left", randomRange(animation.foot.bounds.left, animation.foot.bounds.right, true));
+    moveFoot("right", randomRange(animation.foot.bounds.left, animation.foot.bounds.right, true));
 }
 
-function animateDog() {
-    if (Math.random() <= dog.animation.head.chance) { // Tilt head
-        tiltHead(randomRange(dog.animation.head.bounds.left, dog.animation.head.bounds.right, true), dog.animation.head.duration);
+function animate() {
+    if (Math.random() <= animation.head.chance) { // Tilt head
+        tiltHead(randomRange(animation.head.bounds.left, animation.head.bounds.right, true), animation.head.duration);
     }
 
-    if (Math.random() <= dog.animation.tail.chance) { // Change tail wagging speed
-        dog.tail.duration = randomRange(dog.animation.tail.bounds.left, dog.animation.tail.bounds.right);
+    if (Math.random() <= animation.tail.wag.chance) { // Change tail wagging speed
+        animation.tail.duration = randomRange(animation.tail.wag.bounds.left, animation.tail.wag.bounds.right);
     }
 
-    if (Math.random() <= dog.animation.foot.chance) { // Move feet
-        var angle = randomRange(dog.animation.foot.bounds.left, dog.animation.foot.bounds.right, true);
+    if (Math.random() <= animation.foot.chance) { // Move feet
+        var angle = randomRange(animation.foot.bounds.left, animation.foot.bounds.right, true);
 
         if (coinFlip()) {
-            moveFoot("left", angle, dog.animation.foot.duration);
+            moveFoot("left", angle, animation.foot.duration);
         } else {
-            moveFoot("right", angle, dog.animation.foot.duration);
+            moveFoot("right", angle, animation.foot.duration);
         }
     }
 }
@@ -55,19 +55,19 @@ function moveFoot(foot, angle, duration) {
 }
 
 function wagTail(duration) {
-    dog.tail.duration = duration;
+    animation.tail.duration = duration;
 
     wagTailClockwise();
 }
 
 function wagTailClockwise() {
     dog.tail.snap.animate({
-        transform: "r90," + dog.x + "," + (dog.y - dog.tail.offset)
-    }, dog.tail.duration, mina.easeinout, wagTailCounterClockwise);
+        transform: "r" + animation.tail.bounds.right + "," + dog.x + "," + (dog.y - dog.tail.offset)
+    }, animation.tail.duration, mina.easeinout, wagTailCounterClockwise);
 }
 
 function wagTailCounterClockwise() {
     dog.tail.snap.animate({
-        transform: "r0," + dog.x + "," + (dog.y - dog.tail.offset)
-    }, dog.tail.duration, mina.easeinout, wagTailClockwise);
+        transform: "r" + animation.tail.bounds.left + "," + dog.x + "," + (dog.y - dog.tail.offset)
+    }, animation.tail.duration, mina.easeinout, wagTailClockwise);
 }
