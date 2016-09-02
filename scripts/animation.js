@@ -8,8 +8,8 @@ function initAnimation() {
 
 function initTilt() {
     tiltHead(randomRange(animation.head.bounds.left, animation.head.bounds.right, true));
-    moveFoot("left", randomRange(animation.foot.bounds.left, animation.foot.bounds.right, true));
-    moveFoot("right", randomRange(animation.foot.bounds.left, animation.foot.bounds.right, true));
+    moveFoot(dog.foot.left, randomRange(animation.foot.bounds.left, animation.foot.bounds.right, true));
+    moveFoot(dog.foot.right, randomRange(animation.foot.bounds.left, animation.foot.bounds.right, true));
 }
 
 function animate() {
@@ -25,9 +25,9 @@ function animate() {
         var angle = randomRange(animation.foot.bounds.left, animation.foot.bounds.right, true);
 
         if (coinFlip()) {
-            moveFoot("left", angle, animation.foot.duration);
+            moveFoot(dog.foot.left, angle, animation.foot.duration);
         } else {
-            moveFoot("right", angle, animation.foot.duration);
+            moveFoot(dog.foot.right, angle, animation.foot.duration);
         }
     }
 }
@@ -49,8 +49,8 @@ function moveFoot(foot, angle, duration) {
         duration = 1;
     }
 
-    eval("dog.foot." + foot).snap.animate({
-        transform: "r" + angle + "," + eval("dog.foot." + foot + ".x") + ',' + eval("dog.foot." + foot + ".y")
+    foot.snap.animate({
+        transform: "r" + angle + "," + foot.x + ',' + foot.y
     }, duration, mina.easeinout);
 }
 

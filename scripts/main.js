@@ -1,3 +1,7 @@
+window.onload = init;
+
+document.getElementById("name").addEventListener("keyup", setName);
+
 function init() {
     saveData = cellar.get("dogeared");
 

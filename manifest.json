@@ -1,7 +1,12 @@
 {
-  "name": "Dogeared",
-
-  "chrome_url_overrides" : {
-    "pageToOverride": "index.html"
-  }
+    "manifest_version": 2,
+    "name": "Dogeared",
+    "version": "0.0.1",
+    "chrome_url_overrides": {
+        "newtab": "index.html"
+    },
+    "sandbox": {
+        "pages": ["sandbox.html"]
+    },
+    "content_security_policy": "sandbox allow-scripts allow-forms allow-same-origin"
 }

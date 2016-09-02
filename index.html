@@ -1,26 +1,28 @@
+<!doctype html>
 <html>
 
 <head>
     <title>Dogeared</title>
-    <link rel="stylesheet" href="styles/main.css">
     <meta name="viewport" content="width=400, initial-scale=1">
-    <link href="https://fonts.googleapis.com/css?family=Baloo" rel="stylesheet">
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        #frame {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
 </head>
 
-<body onload="init()">
-    <div id="container">
-        <svg id="dog"></svg>
-        <input id="name" type="text" onkeyup="setName()">
-    </div>
+<body>
+    <iframe id="frame" src="sandbox.html"></iframe>
 </body>
-
-<script src="scripts/snap.svg-min.js"></script>
-<script src="scripts/cellar.min.js"></script>
-<script src="scripts/variables.js"></script>
-<script src="scripts/tools.js"></script>
-<script src="scripts/draw.js"></script>
-<script src="scripts/animation.js"></script>
-<script src="scripts/interact.js"></script>
-<script src="scripts/main.js"></script>
 
 </html>

@@ -4,7 +4,7 @@ function initInteraction() {
 }
 
 function pet() {
-    switchEyes("happy");
+    switchEyes(dog.eyes.emotions.happy);
     saveData.dog.affection.exp++;
 
     if (saveData.dog.affection.exp > 300) {
@@ -18,6 +18,6 @@ function donePetting() {
     cellar.save("dogeared", saveData);
 
     setTimeout(function() {
-        switchEyes("normal");
+        switchEyes(dog.eyes.emotions.normal);
     }, 650);
 }
