@@ -1,5 +1,4 @@
 var cellar = new Cellar();
-var snap = Snap("#dog");
 
 var canvas = {
     width: 400,
@@ -80,7 +79,7 @@ var dog = {
             sleepy: {}
         }
     },
-    body: {
+    torso: {
         width: 162,
         height: 161,
         anchor: {
@@ -160,13 +159,13 @@ var effects = {
 };
 
 dog.head.x = dog.x;
-dog.head.y = dog.y - dog.body.height * 0.75;
+dog.head.y = dog.y - dog.torso.height * 0.75;
 
 dog.eyes.x = dog.head.x;
 dog.eyes.y = dog.head.y - dog.head.height * 0.25;
 
-dog.body.x = dog.x;
-dog.body.y = dog.y;
+dog.torso.x = dog.x;
+dog.torso.y = dog.y;
 
 dog.legs.x = dog.x;
 dog.legs.y = dog.y + 20;
@@ -174,10 +173,10 @@ dog.legs.y = dog.y + 20;
 dog.tail.x = dog.x;
 dog.tail.y = dog.y - dog.tail.offset;
 
-dog.foot.left.x = dog.x - dog.body.width / 2 + 5;
+dog.foot.left.x = dog.x - dog.torso.width / 2 + 5;
 dog.foot.left.y = dog.y;
 
-dog.foot.right.x = dog.x + dog.body.width / 2 - 5;
+dog.foot.right.x = dog.x + dog.torso.width / 2 - 5;
 dog.foot.right.y = dog.y;
 
 dog.shadow.x = dog.x;
@@ -188,3 +187,16 @@ accessories.glasses.y = dog.head.y - dog.head.height * 0.25;
 
 effects.heart.x = dog.head.x;
 effects.heart.y = dog.head.y - dog.head.height * 0.85;
+
+applyCSS(".head", dog.head);
+applyCSS(".torso", dog.torso);
+applyCSS(".legs", dog.legs);
+applyCSS(".tail", dog.tail);
+applyCSS(".eyes-normal", dog.eyes);
+applyCSS(".eyes-happy", dog.eyes);
+applyCSS(".eyes-sleepy", dog.eyes);
+applyCSS(".glasses", accessories.glasses);
+applyCSS(".shadow", dog.shadow);
+applyCSS(".foot-left", dog.foot.left);
+applyCSS(".foot-right", dog.foot.right);
+applyCSS(".heart", effects.heart);

@@ -4,8 +4,5 @@
     "version": "0.0.1",
     "chrome_url_overrides": {
         "newtab": "index.html"
-    },
-    "sandbox": {
-        "pages": ["sandbox.html"]
     }
 }

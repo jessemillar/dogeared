@@ -3,7 +3,7 @@ html {
     background-color: #405952;
 }
 
-#container {
+.container {
     position  : absolute;
     left      : 0;
     top       : 0;
@@ -14,7 +14,7 @@ html {
     overflow  : hidden;
 }
 
-#dog {
+.dog {
     position   : absolute;
     left       : 50%;
     top        : 50%;
@@ -24,7 +24,7 @@ html {
     margin-top : calc(-200px - 35px);
 }
 
-#name {
+.name {
     position        : absolute;
     left            : 0;
     top             : 50%;

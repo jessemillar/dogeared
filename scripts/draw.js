@@ -3,7 +3,7 @@ function initDraw() {
 
     dog.tail.snap = loadImage("tail", dog.tail);
 
-    dog.body.snap = loadImage("body", dog.body);
+    dog.torso.snap = loadImage("body", dog.torso);
 
     dog.foot.left.snap = loadImage("foot", dog.foot.left);
     dog.foot.right.snap = loadImage("foot", dog.foot.right);
