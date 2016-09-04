@@ -23,30 +23,24 @@ var animation = {
     interval: 1000,
     head: {
         angle: 0,
-        chance: 0.8,
+        chance: 0.2,
         bounds: {
             left: -35,
             right: 35
         }
     },
     foot: {
-        chance: 0.75,
+        chance: 0.3,
         bounds: {
             left: -15,
             right: 15
         }
     },
     tail: {
+        chance: 0.2,
         bounds: {
-            left: -55,
-            right: 55,
+            left: 250,
+            right: 500,
         },
-        wag: {
-            chance: 0.2,
-            bounds: {
-                left: 250,
-                right: 500,
-            },
-        }
     }
 };
