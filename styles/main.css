@@ -1,6 +1,7 @@
 body,
 html {
     background-color: #405952;
+    font-family     : "Baloo", "Helvetica", sans-serif;
 }
 
 .container {
@@ -12,6 +13,20 @@ html {
     min-width : 400px;
     min-height: 435px;
     overflow  : hidden;
+}
+
+.inspiration {
+    position : absolute;
+    left     : 10px;
+    top      : 10px;
+    font-size: 15px;
+    color    : #fff;
+    opacity  : 0.25;
+}
+
+.inspiration a {
+    color          : #fff;
+    text-decoration: underline;
 }
 
 .name {
