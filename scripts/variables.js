@@ -54,6 +54,8 @@ var animation = {
     }
 };
 
+console.log($(".face").height());
+
 var dog = {
     // Make the main coordinate at the bottom-middle of the body
     x: 200,
@@ -64,6 +66,14 @@ var dog = {
         anchor: {
             x: 150 / 2,
             y: 190
+        }
+    },
+    face: {
+        width: 150,
+        height: 205,
+        anchor: {
+            x: 0,
+            y: 0
         }
     },
     eyes: {
@@ -161,8 +171,11 @@ var effects = {
 dog.head.x = dog.x;
 dog.head.y = dog.y - dog.torso.height * 0.75;
 
-dog.eyes.x = dog.head.x;
-dog.eyes.y = dog.head.y - dog.head.height * 0.25;
+dog.face.x = 0;
+dog.face.y = 0;
+
+dog.eyes.x = dog.head.width / 2;
+dog.eyes.y = dog.head.height * 0.68;
 
 dog.torso.x = dog.x;
 dog.torso.y = dog.y;
@@ -182,21 +195,8 @@ dog.foot.right.y = dog.y;
 dog.shadow.x = dog.x;
 dog.shadow.y = dog.y;
 
-accessories.glasses.x = dog.head.x;
-accessories.glasses.y = dog.head.y - dog.head.height * 0.25;
+accessories.glasses.x = dog.head.width / 2;
+accessories.glasses.y = dog.face.height * 0.68;
 
-effects.heart.x = dog.head.x;
-effects.heart.y = dog.head.y - dog.head.height * 0.85;
-
-applyCSS(".head", dog.head);
-applyCSS(".torso", dog.torso);
-applyCSS(".legs", dog.legs);
-applyCSS(".tail", dog.tail);
-applyCSS(".eyes-normal", dog.eyes);
-applyCSS(".eyes-happy", dog.eyes);
-applyCSS(".eyes-sleepy", dog.eyes);
-applyCSS(".glasses", accessories.glasses);
-applyCSS(".shadow", dog.shadow);
-applyCSS(".foot-left", dog.foot.left);
-applyCSS(".foot-right", dog.foot.right);
-applyCSS(".heart", effects.heart);
+effects.heart.x = dog.face.x;
+effects.heart.y = dog.face.y - dog.face.height * 0.85;

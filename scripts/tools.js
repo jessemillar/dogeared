@@ -22,15 +22,3 @@ function randomRange(left, right, negative) {
 
     return Math.floor(Math.random() * right) + left;
 }
-
-function applyCSS(div, attributes) {
-    $(div).css({
-        position: "absolute",
-        top: attributes.x,
-        left: attributes.y,
-        width: attributes.width + "px",
-        height: attributes.height + "px",
-        marginLeft: "-" + attributes.anchor.x + "px",
-        marginTop: "-" + attributes.anchor.y + "px"
-    });
-}

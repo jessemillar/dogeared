@@ -17,7 +17,5 @@ function init() {
         initTilt(); // Start the dog with his head and feet (randomly) rotated slightly
         initAnimation(); // Start animating via the timer/chance calculations
         initInteraction(); // Set up handlers for various interactions
-
-        // debugPoint(dog.tail.x - dog.tail.anchor.x, dog.tail.y - dog.tail.anchor.y);
     }
 }

@@ -39,9 +39,14 @@ function tiltHead(angle, duration) {
 
     animation.head.angle = angle; // Save the angle globally so we can rotate accessories and eyes
 
-    dog.head.group.animate({
-        transform: "r" + angle + "," + dog.head.x + ',' + dog.head.y
-    }, duration, mina.easeinout);
+    $(".head").css({
+        transform: "rotate(" + angle + "deg)",
+        transformOrigin: dog.head.anchor.x + "px " + dog.head.anchor.y + "px"
+    });
+
+    // dog.face.group.animate({
+    //     transform: "r" + angle + "," + dog.face.x + "," + dog.face.y
+    // }, duration, mina.easeinout);
 }
 
 function moveFoot(foot, angle, duration) {
@@ -49,9 +54,14 @@ function moveFoot(foot, angle, duration) {
         duration = 1;
     }
 
-    foot.snap.animate({
-        transform: "r" + angle + "," + foot.x + ',' + foot.y
-    }, duration, mina.easeinout);
+    $(".foot-left").css({
+        transform: "rotate(" + angle + "deg)",
+        transformOrigin: dog.foot.left.anchor.x + "px " + dog.foot.left.anchor.y + "px"
+    });
+
+    // foot.snap.animate({
+    //     transform: "r" + angle + "," + foot.x + "," + foot.y
+    // }, duration, mina.easeinout);
 }
 
 function wagTail(duration) {
