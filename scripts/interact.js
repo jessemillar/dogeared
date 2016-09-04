@@ -1,6 +1,6 @@
 function initInteraction() {
-    $(".face").mousemove(pet);
-    $(".face").mouseout(donePetting);
+    $(".head").mousemove(pet);
+    $(".head").mouseout(donePetting);
 }
 
 function pet() {

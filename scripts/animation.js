@@ -1,5 +1,5 @@
 function initAnimation() {
-    wagTail(animation.tail.wag.duration); // Always wag tail, just change the speed to a random value
+    // wagTail(animation.tail.wag.duration); // Always wag tail, just change the speed to a random value
 
     var animateTimer = setInterval(function() {
         animate();
@@ -8,8 +8,8 @@ function initAnimation() {
 
 function initTilt() {
     tiltHead(randomRange(animation.head.bounds.left, animation.head.bounds.right, true));
-    moveFoot(dog.foot.left, randomRange(animation.foot.bounds.left, animation.foot.bounds.right, true));
-    moveFoot(dog.foot.right, randomRange(animation.foot.bounds.left, animation.foot.bounds.right, true));
+    moveFoot({}, randomRange(animation.foot.bounds.left, animation.foot.bounds.right, true));
+    moveFoot({}, randomRange(animation.foot.bounds.left, animation.foot.bounds.right, true));
 }
 
 function animate() {
@@ -25,9 +25,9 @@ function animate() {
         var angle = randomRange(animation.foot.bounds.left, animation.foot.bounds.right, true);
 
         if (coinFlip()) {
-            moveFoot(dog.foot.left, angle, animation.foot.duration);
+            // moveFoot(dog.foot.left, angle, animation.foot.duration);
         } else {
-            moveFoot(dog.foot.right, angle, animation.foot.duration);
+            // moveFoot(dog.foot.right, angle, animation.foot.duration);
         }
     }
 }
@@ -41,12 +41,8 @@ function tiltHead(angle, duration) {
 
     $(".head").css({
         transform: "rotate(" + angle + "deg)",
-        transformOrigin: dog.head.anchor.x + "px " + dog.head.anchor.y + "px"
+        transformOrigin: -1 * parseInt($(".head").css("margin-left")) + "px " + -1 * parseInt($(".head").css("margin-top")) + "px"
     });
-
-    // dog.face.group.animate({
-    //     transform: "r" + angle + "," + dog.face.x + "," + dog.face.y
-    // }, duration, mina.easeinout);
 }
 
 function moveFoot(foot, angle, duration) {
@@ -56,7 +52,7 @@ function moveFoot(foot, angle, duration) {
 
     $(".foot-left").css({
         transform: "rotate(" + angle + "deg)",
-        transformOrigin: dog.foot.left.anchor.x + "px " + dog.foot.left.anchor.y + "px"
+        transformOrigin: "center " + -1 * parseInt($(".foot-left").css("margin-top")) + "px"
     });
 
     // foot.snap.animate({

@@ -27,6 +27,7 @@
     margin-left: calc(-1 * 150px / 2);
     margin-top : calc(-1 * 205px * 0.8);
     z-index    : 50;
+    transition : transform 0.35s ease-in-out;
 }
 
 .face {
@@ -80,9 +81,10 @@
 }
 
 .foot {
-    width  : 30px;
-    height : 50px;
-    z-index: 30;
+    width     : 30px;
+    height    : 50px;
+    z-index   : 30;
+    transition: transform 0.35s ease-in-out;
 }
 
 .foot-left {

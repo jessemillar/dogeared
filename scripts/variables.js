@@ -23,8 +23,7 @@ var animation = {
     interval: 1000,
     head: {
         angle: 0,
-        chance: 0.2,
-        duration: 350,
+        chance: 0.8,
         bounds: {
             left: -35,
             right: 35
@@ -32,7 +31,6 @@ var animation = {
     },
     foot: {
         chance: 0.75,
-        duration: 500,
         bounds: {
             left: -15,
             right: 15
@@ -45,7 +43,6 @@ var animation = {
         },
         wag: {
             chance: 0.2,
-            duration: 500,
             bounds: {
                 left: 250,
                 right: 500,
@@ -53,148 +50,3 @@ var animation = {
         }
     }
 };
-
-var dog = {
-    // Make the main coordinate at the bottom-middle of the body
-    x: 200,
-    y: 350,
-    head: {
-        width: 150,
-        height: 205,
-        anchor: {
-            x: 150 / 2,
-            y: 190
-        }
-    },
-    face: {
-        width: 150,
-        height: 205,
-        anchor: {
-            x: 0,
-            y: 0
-        }
-    },
-    eyes: {
-        width: 74,
-        height: 16,
-        anchor: {
-            x: 74 / 2,
-            y: 16 / 2
-        },
-        emotions: {
-            normal: {},
-            happy: {},
-            sleepy: {}
-        }
-    },
-    torso: {
-        width: 162,
-        height: 161,
-        anchor: {
-            x: 162 / 2,
-            y: 161
-        }
-    },
-    legs: {
-        width: 122,
-        height: 98,
-        anchor: {
-            x: 122 / 2,
-            y: 98
-        }
-    },
-    tail: {
-        offset: 12.5,
-        width: 25,
-        height: 155,
-        anchor: {
-            x: 25 / 2,
-            y: 155 - 12.5
-        }
-    },
-    foot: {
-        left: {
-            x: 0,
-            y: 0,
-            width: 30,
-            height: 50,
-            anchor: {
-                x: 30 / 2,
-                y: 45
-            }
-        },
-        right: {
-            x: 0,
-            y: 0,
-            width: 30,
-            height: 50,
-            anchor: {
-                x: 30 / 2,
-                y: 45
-            }
-        }
-    },
-    shadow: {
-        width: 248,
-        height: 75,
-        anchor: {
-            x: 248 / 2,
-            y: 75 / 2 + 5
-        }
-    }
-};
-
-var accessories = {
-    glasses: {
-        width: 128,
-        height: 42,
-        anchor: {
-            x: 128 / 2,
-            y: 42 / 2
-        }
-    }
-};
-
-var effects = {
-    heart: {
-        width: 62,
-        height: 56,
-        anchor: {
-            x: 62 / 2,
-            y: 56 / 2
-        }
-    }
-};
-
-dog.head.x = dog.x;
-dog.head.y = dog.y - dog.torso.height * 0.75;
-
-dog.face.x = 0;
-dog.face.y = 0;
-
-dog.eyes.x = dog.head.width / 2;
-dog.eyes.y = dog.head.height * 0.68;
-
-dog.torso.x = dog.x;
-dog.torso.y = dog.y;
-
-dog.legs.x = dog.x;
-dog.legs.y = dog.y + 20;
-
-dog.tail.x = dog.x;
-dog.tail.y = dog.y - dog.tail.offset;
-
-dog.foot.left.x = dog.x - dog.torso.width / 2 + 5;
-dog.foot.left.y = dog.y;
-
-dog.foot.right.x = dog.x + dog.torso.width / 2 - 5;
-dog.foot.right.y = dog.y;
-
-dog.shadow.x = dog.x;
-dog.shadow.y = dog.y;
-
-accessories.glasses.x = dog.head.width / 2;
-accessories.glasses.y = dog.face.height * 0.68;
-
-effects.heart.x = dog.face.x;
-effects.heart.y = dog.face.y - dog.face.height * 0.85;
