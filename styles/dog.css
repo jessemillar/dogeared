@@ -24,7 +24,7 @@
 .head {
     position   : absolute;
     left       : 50%;
-    top        : calc(350px - 205px * 0.75);
+    top        : calc(360px - 205px * 0.75);
     width      : 150px;
     height     : 205px;
     margin-left: calc(-1 * 150px / 2);
@@ -39,7 +39,7 @@
     top     : 0;
     width   : 150px;
     height  : 205px;
-    z-index : 0;
+    z-index : 10;
 }
 
 .eyes {
@@ -50,7 +50,7 @@
     height     : 16px;
     margin-left: calc(-1 * 74px / 2);
     margin-top : calc(-1 * 16px / 2);
-    z-index    : 10;
+    z-index    : 20;
 }
 
 .eyes-happy,
@@ -69,13 +69,23 @@
     height     : 42px;
     margin-left: calc(-1 * 128px / 2);
     margin-top : calc(-1 * 42px / 2);
-    z-index    : 20;
+    z-index    : 30;
+}
+
+.party-hat {
+    position   : absolute;
+    left       : 50%;
+    top        : 0;
+    width      : 68px;
+    height     : 92px;
+    margin-left: calc(-1 * 68px / 2);
+    z-index    : 30;
 }
 
 .legs {
     position   : absolute;
     left       : 50%;
-    top        : calc(350px + 20px);
+    top        : calc(360px + 20px);
     width      : 122px;
     height     : 98px;
     margin-left: calc(-1 * 122px / 2);
@@ -93,7 +103,7 @@
 .foot-left {
     position   : absolute;
     left       : 50%;
-    top        : 350px;
+    top        : 360px;
     margin-left: calc(-1 * 162px / 2 - 30px / 2);
     margin-top : calc(-1 * 50px * 0.9);
 }
@@ -101,7 +111,7 @@
 .foot-right {
     position   : absolute;
     left       : 50%;
-    top        : 350px;
+    top        : 360px;
     margin-left: calc(162px / 2 - 30px / 2);
     margin-top : calc(-1 * 50px * 0.9);
 }
@@ -109,7 +119,7 @@
 .torso {
     position   : absolute;
     left       : 50%;
-    top        : 350px;
+    top        : 360px;
     width      : 162px;
     height     : 161px;
     margin-left: calc(-1 * 162px / 2);
@@ -120,7 +130,7 @@
 .tail {
     position                 : absolute;
     left                     : 50%;
-    top                      : 350px;
+    top                      : 360px;
     width                    : 25px;
     height                   : 136px;
     margin-left              : calc(-1 * 25px / 2);
@@ -144,10 +154,21 @@
     }
 }
 
+.ball {
+    position   : absolute;
+    left       : 15%;
+    top        : calc(360px + 5px);
+    width      : 45px;
+    height     : 45px;
+    margin-left: calc(-1 * 45px / 2);
+    margin-top : calc(-1 * 45px / 2);
+    z-index    : 10;
+}
+
 .shadow {
     position   : absolute;
     left       : 50%;
-    top        : 350px;
+    top        : 360px;
     width      : 248px;
     height     : 75px;
     margin-left: calc(-1 * 248px / 2);

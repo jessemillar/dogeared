@@ -4,6 +4,8 @@ var saveData = {};
 
 var petting = false;
 
+var backgroundColors = [];
+
 var save = {
     version: 1.0,
     dog: {
