@@ -43,13 +43,13 @@ function moveFoot(div, angle) {
 }
 
 function heartEffect() {
-    effects.heart.snap.animate({
-        transform: "s1,1,1,1"
-    }, 500, mina.elastic);
+    $(".heart").css({
+        transform: "scale(1)"
+    });
 
     setTimeout(function() {
-        effects.heart.snap.animate({
-            transform: "s0,0"
-        }, 100, mina.easeinout);
+        $(".heart").css({
+            transform: "scale(0)"
+        });
     }, 2000);
 }

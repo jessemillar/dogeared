@@ -4,7 +4,6 @@ function initInteraction() {
 }
 
 function pet() {
-    console.log("Test");
     switchEyes(".eyes-happy");
     saveData.dog.affection.exp++;
 
