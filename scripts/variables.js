@@ -54,8 +54,6 @@ var animation = {
     }
 };
 
-console.log($(".face").height());
-
 var dog = {
     // Make the main coordinate at the bottom-middle of the body
     x: 200,

@@ -1,0 +1,135 @@
+.dog {
+    position   : absolute;
+    left       : 50%;
+    top        : 50%;
+    width      : 400px;
+    height     : 400px;
+    margin-left: -200px;
+    margin-top : calc(-200px - 35px);
+}
+
+.heart {
+    position   : absolute;
+    left       : 50%;
+    top        : 15px;
+    width      : 62px;
+    height     : 56px;
+    margin-left: calc(-1 * 62px / 2);
+    z-index    : 999;
+}
+
+.head {
+    position   : absolute;
+    left       : 50%;
+    top        : calc(350px - 205px * 0.75);
+    width      : 150px;
+    height     : 205px;
+    margin-left: calc(-1 * 150px / 2);
+    margin-top : calc(-1 * 205px * 0.8);
+    z-index    : 50;
+}
+
+.face {
+    position: absolute;
+    left    : 0;
+    top     : 0;
+    width   : 150px;
+    height  : 205px;
+    z-index : 0;
+}
+
+.eyes {
+    position   : absolute;
+    left       : calc(150px / 2);
+    top        : calc(205px * 0.68);
+    width      : 74px;
+    height     : 16px;
+    margin-left: calc(-1 * 74px / 2);
+    margin-top : calc(-1 * 16px / 2);
+    z-index    : 10;
+}
+
+.eyes-happy,
+.eyes-normal,
+.eyes-sleepy {
+    position: absolute;
+    left    : 0;
+    top     : 0;
+}
+
+.glasses {
+    position   : absolute;
+    left       : 50%;
+    top        : calc(205px * 0.68);
+    width      : 128px;
+    height     : 42px;
+    margin-left: calc(-1 * 128px / 2);
+    margin-top : calc(-1 * 42px / 2);
+    z-index    : 20;
+}
+
+.legs {
+    position   : absolute;
+    left       : 50%;
+    top        : calc(350px + 20px);
+    width      : 122px;
+    height     : 98px;
+    margin-left: calc(-1 * 122px / 2);
+    margin-top : calc(-1 * 98px);
+    z-index    : 40;
+}
+
+.foot {
+    width  : 30px;
+    height : 50px;
+    z-index: 30;
+}
+
+.foot-left {
+    position   : absolute;
+    left       : 50%;
+    top        : 350px;
+    margin-left: calc(-1 * 162px / 2 - 30px / 2);
+    margin-top : calc(-1 * 50px * 0.9);
+}
+
+.foot-right {
+    position   : absolute;
+    left       : 50%;
+    top        : 350px;
+    margin-left: calc(162px / 2 - 30px / 2);
+    margin-top : calc(-1 * 50px * 0.9);
+}
+
+.torso {
+    position   : absolute;
+    left       : 50%;
+    top        : 350px;
+    width      : 162px;
+    height     : 161px;
+    margin-left: calc(-1 * 162px / 2);
+    margin-top : calc(-1 * 161px);
+    z-index    : 20;
+}
+
+.tail {
+    position   : absolute;
+    left       : 50%;
+    top        : 350px;
+    width      : 25px;
+    height     : 155px;
+    margin-left: calc(-1 * 25px / 2);
+    margin-top : calc(-1 * 155px);
+    z-index    : 10;
+}
+
+.shadow {
+    position   : absolute;
+    left       : 50%;
+    top        : 350px;
+    width      : 248px;
+    height     : 75px;
+    margin-left: calc(-1 * 248px / 2);
+    margin-top : calc(-1 * 75px / 2);
+    z-index    : 0;
+}
