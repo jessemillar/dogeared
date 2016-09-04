@@ -126,7 +126,7 @@
     margin-left              : calc(-1 * 25px / 2);
     margin-top               : calc(-1 * 155px);
     z-index                  : 10;
-    animation                : wag 0.7s infinite;
+    animation                : wag 1s infinite;
     animation-timing-function: ease-in-out;
     transform-origin         : center calc(155px - 25px / 2);
 }

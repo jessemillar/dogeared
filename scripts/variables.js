@@ -1,10 +1,5 @@
 var cellar = new Cellar();
 
-var canvas = {
-    width: 400,
-    height: 400
-};
-
 var saveData = {};
 
 var save = {
