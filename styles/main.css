@@ -29,3 +29,14 @@ html {
     outline         : none;
     font-family     : "Baloo", "Helvetica", sans-serif;
 }
+
+.treat {
+    position   : absolute;
+    left       : 100px;
+    top        : 100px;
+    width      : 55px;
+    height     : 25px;
+    margin-left: calc(-1 * 55px / 2);
+    margin-top : calc(-1 * 25px / 2);
+    z-index    : 500;
+}

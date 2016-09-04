@@ -1,5 +1,7 @@
 function initDraw() {
     switchEyes(".eyes-normal");
+
+    $(".treat").draggable();
 }
 
 function switchEyes(eyes) {
