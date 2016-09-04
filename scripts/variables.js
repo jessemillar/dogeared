@@ -2,6 +2,8 @@ var cellar = new Cellar();
 
 var saveData = {};
 
+var petting = false;
+
 var save = {
     version: 1.0,
     dog: {
@@ -24,18 +26,18 @@ var animation = {
             right: 35
         }
     },
+    blink: {
+        chance: 0.35,
+        bounds: {
+            left: 50,
+            right: 350
+        }
+    },
     foot: {
         chance: 0.3,
         bounds: {
             left: -15,
             right: 15
         }
-    },
-    tail: {
-        chance: 0.2,
-        bounds: {
-            left: 250,
-            right: 500,
-        },
     }
 };

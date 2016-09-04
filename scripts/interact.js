@@ -17,6 +17,8 @@ function levelUp() {
 }
 
 function pet() {
+    petting = true;
+
     switchEyes(".eyes-happy");
     saveData.dog.affection.exp++;
 
@@ -29,6 +31,8 @@ function donePetting() {
     cellar.save("dogeared", saveData);
 
     setTimeout(function() {
+        petting = false;
+
         switchEyes(".eyes-normal");
     }, 650);
 }

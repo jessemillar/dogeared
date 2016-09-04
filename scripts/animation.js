@@ -15,6 +15,10 @@ function animate() {
         tiltHead(randomRange(animation.head.bounds.left, animation.head.bounds.right, true));
     }
 
+    if (Math.random() <= animation.blink.chance) { // Blink
+        blink(randomRange(animation.blink.bounds.left, animation.blink.bounds.right));
+    }
+
     if (Math.random() <= animation.foot.chance) { // Move feet
         var angle = randomRange(animation.foot.bounds.left, animation.foot.bounds.right, true);
 
@@ -23,6 +27,16 @@ function animate() {
         } else {
             moveFoot(".foot-right", angle);
         }
+    }
+}
+
+function blink(duration) {
+    if (!petting) {
+        switchEyes(".eyes-sleepy");
+
+        setTimeout(function() {
+            switchEyes(".eyes-normal");
+        }, duration);
     }
 }
 
