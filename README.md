@@ -1,3 +1,5 @@
+> This project was abondoned long ago at the request of the developer of [Tabby Cats](http://tabbycats.club/).
+
 # dogeared
 A Chrome extension that puts cute dogs on your new tab pages. Heavily inspired by [Tabby Cats](http://tabbycats.club/). I'm much more of a dog lover than a cat person and felt the world deserved the adorable-ness of Tabby Cats but with dogs. No plagiarism is intended and all resources are coded and drawn from scratch.
 
